@@ -108,7 +108,9 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gol
 .needs span{border:1px solid rgba(98,207,195,.4);background:rgba(55,163,153,.12);border-radius:999px;padding:8px 14px;font-size:14px}
 
 /* 03 solution */
-.pipe{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin-top:34px}
+.pipe{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch;margin-top:34px}
+.pipe .arrow{align-self:center}
+.node{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .node{border-radius:22px;padding:28px 20px;text-align:center;background:#123847;border:1px solid rgba(98,207,195,.3);box-shadow:0 20px 60px rgba(0,0,0,.35)}
 .node.mid{background:linear-gradient(160deg,#1a5a5c,#0f3442);border-color:var(--teal-l);box-shadow:0 0 0 1px var(--teal),0 0 60px rgba(55,163,153,.35)}
 .node.end{border-color:rgba(212,160,23,.55)}
@@ -411,7 +413,6 @@ body:not(.locked) #gate{display:none}
       </div>
     </div>
     <div class="rdi reveal">Real-Time Data<i>•</i>Analytics<i>•</i>Intelligence</div>
-    <p class="subj reveal">Subject to station connectivity, API access and data-sharing agreements.</p>
   </div>
 </section>
 
