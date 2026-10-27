@@ -154,6 +154,15 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gol
 .checks div:before{content:"✓";width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--green);color:var(--green);font-size:12px;font-weight:700}
 
 /* 05 flows */
+.appb{display:grid;grid-template-columns:1.1fr 1.4fr .8fr;gap:12px;margin-top:16px}
+.appb div{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px}
+.appb h4{width:100%;font:600 11px Inter;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.appb span{font-size:13px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:99px;padding:5px 11px;display:inline-flex;gap:6px;align-items:center}
+.appb .chip{font-style:normal;font-size:9px;padding:2px 7px}
+#s5{padding-top:84px;padding-bottom:24px}
+#s5 .flows{margin-top:16px}
+#s5 .term{height:290px}
+#s5 .punch{margin-top:16px}
 .flows{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
 .flow{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:center}
 .flow h3{font-size:20px;margin-bottom:4px}
@@ -218,6 +227,7 @@ body.present section{height:100vh;overflow:hidden}
 @media (max-width:980px){
   .g4,.g3{grid-template-columns:1fr 1fr}
   .rh,.rr{grid-template-columns:200px 150px 1fr}
+  .appb{grid-template-columns:1fr}
   .chal,.op,.flows,.cc .body{grid-template-columns:1fr}
   .pipe{grid-template-columns:1fr;justify-items:center}.pipe .node{width:100%;max-width:420px}
   .arrow{width:4px;height:40px;background:linear-gradient(var(--teal),var(--teal-l))}.arrow:after{width:100%;height:30%;left:0;top:-30%;animation:flowv 1.6s linear infinite}
@@ -389,7 +399,7 @@ body:not(.locked) #gate{display:none}
   <div class="wrap">
     <div class="kicker reveal"><b>05</b> KILAT Consumer Experience</div>
     <h2 class="reveal">Charging in <em>three simple steps.</em></h2>
-    <p class="lead reveal">At every KILAT Dock, drivers choose how they pay — <b>scan with the KILAT app</b> or <b>tap a KILAT NFC card</b>. The charge stops automatically at the amount chosen.</p>
+    <p class="lead reveal">No guessing at the charger: the KILAT app shows where to charge, what it costs and how the charge is going. At every KILAT Dock, drivers choose how they pay — <b>scan with the KILAT app</b> or <b>tap a KILAT NFC card</b>. The charge stops automatically at the amount chosen.</p>
     <div class="flows">
       <div class="flow reveal" data-flow="qr">
         <div class="term"><div class="tscr">
@@ -423,6 +433,11 @@ body:not(.locked) #gate{display:none}
           <ol class="steps"><li><span>Select dock charger<small>See which docks are free</small></span></li><li><span>Select amount<small>RM 50 · RM 100 · RM 150</small></span></li><li><span>Tap NFC card<small>No phone needed — charging starts</small></span></li></ol>
         </div>
       </div>
+    </div>
+    <div class="appb reveal">
+      <div><h4>Before charging</h4><span>📍 Find nearby stations</span><span>🟢 Live dock availability</span><span>🏷️ See the price before starting</span><span>💳 Pay in the app</span></div>
+      <div><h4>While charging</h4><span>⚡ Charging speed (kW)</span><span>🔋 Battery %</span><span>⏱️ Time to full</span><span>📊 Energy delivered (kWh)</span><span>🔔 Alerts while you run errands</span></div>
+      <div><h4>Next</h4><span>🌙 Off-peak charging schedules <i class="chip">Roadmap</i></span></div>
     </div>
     <p class="punch reveal">Every connected charging session contributes <span>valuable operational and behavioural insights.</span></p>
   </div>
