@@ -80,7 +80,11 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gol
 
 /* 02 challenge */
 .risk{margin-top:22px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(6,23,31,.55)}
-.rh,.rr{display:grid;grid-template-columns:250px 170px 1fr;gap:16px;align-items:center;padding:12px 18px}
+.rh{padding:12px 18px}
+.rgrid{display:grid;grid-template-columns:repeat(5,1fr)}
+.rgrid div{padding:22px 18px;border-top:1px solid var(--line);border-right:1px solid var(--line);font:700 16px Sora;display:flex;flex-direction:column;gap:12px}
+.rgrid div:last-child{border-right:0}
+.rgrid i{font-style:normal;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(55,163,153,.18);color:var(--teal-l);font-size:16px}
 .rh{background:rgba(212,160,23,.12);font:600 11px Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-l)}
 .rh span:first-child{font:800 13px Sora;letter-spacing:.04em;text-transform:none;color:#fff}
 .rr{border-top:1px solid var(--line)}
@@ -289,7 +293,7 @@ body.present section{height:100vh;overflow:hidden}
 }
 @media (max-width:980px){
   .g4,.g3{grid-template-columns:1fr 1fr}
-  .rh,.rr{grid-template-columns:200px 150px 1fr}
+  .rgrid{grid-template-columns:1fr 1fr}.rgrid div{border-right:0}
   .appb{grid-template-columns:1fr}
   .turn,.scope{grid-template-columns:1fr}.poc{grid-template-columns:1fr 1fr}.poc div{border:0;margin:0}.ctrl{grid-template-columns:1fr}
   .chal,.op,.flows,.cc .body{grid-template-columns:1fr}
@@ -302,7 +306,7 @@ body.present section{height:100vh;overflow:hidden}
 @media (max-width:560px){
   section{padding:88px 16px 52px}
   .g2,.g3,.g4,.checks,.facts{grid-template-columns:1fr}
-  .rh{display:none}.rr{grid-template-columns:1fr;gap:6px}
+  .rgrid{grid-template-columns:1fr}.rgrid div{flex-direction:row;align-items:center;padding:14px 16px}
   .poc,.sc-list{grid-template-columns:1fr}
   .bar{padding:12px 16px}.counter,.bar a.btn{display:none}
   .flow{grid-template-columns:1fr}.term{max-width:250px;width:100%;margin:0 auto}
@@ -339,7 +343,7 @@ body:not(.locked) #gate{display:none}
   <div class="logo"><img src="assets/kilat-mark.png" alt="">KILAT</div>
   <div class="tag">Executive Proposal · TNBX</div>
   <div class="sp"></div>
-  <span class="counter" id="counter">01 / 09</span>
+  <span class="counter" id="counter">01 / 08</span>
   <a class="btn" href="https://kilat-fastcharging.vercel.app" target="_blank">Live system ↗</a>
   <button class="btn gold" id="present">▶ Present</button>
 </header>
@@ -368,15 +372,17 @@ body:not(.locked) #gate{display:none}
   <div class="wrap">
     <div class="kicker reveal"><b>02</b> The Business Challenge</div>
     <h2 class="reveal">Infrastructure without visibility <em>limits value.</em></h2>
-    <p class="lead reveal">Stations operated across different locations and partners can create <b>fragmented operational data</b> — and five core risks. KILAT gives every risk a clear owner and a mitigation.</p>
+    <p class="lead reveal">Stations operated across different locations and partners can create <b>fragmented operational data</b> — and five core risks.</p>
     <div class="needs reveal"><span>Station availability</span><span>Charging activity</span><span>Utilisation</span><span>Energy consumption</span><span>Revenue performance</span></div>
     <div class="risk reveal">
-      <div class="rh"><span>Core Risk Allocation Matrix</span><span>Lead</span><span>How it is managed</span></div>
-      <div class="rr"><b><i>⚡</i>Grid Capacity &amp; Delays</b><span class="own"><em class="tn">TNBX</em><em class="ae">AE Setia</em></span><p>AE Setia delivers TNB-standard site works (11/33kV, substations); phased rollout and utilisation data show where capacity is needed first.</p></div>
-      <div class="rr"><b><i>⟳</i>Technological Obsolescence</b><span class="own"><em class="kl">KILAT</em></span><p>Open OCPP 1.6J standard — vendor-neutral chargers; the platform is upgraded from the cloud, no hardware replacement.</p></div>
-      <div class="rr"><b><i>↕</i>Electricity Price Volatility</b><span class="own"><em class="tn">TNBX</em></span><p>Tariffs updated centrally from the Command Centre with two-person approval; price locked per session for drivers.</p></div>
-      <div class="rr"><b><i>✓</i>Uptime &amp; Maintenance</b><span class="own"><em class="ae">AE Setia</em><em class="kl">KILAT</em></span><p>Real-time fault &amp; downtime alerts trigger AE Setia field response; uptime tracked per dock.</p></div>
-      <div class="rr"><b><i>⚠</i>Vandalism &amp; Parking Abuse</b><span class="own"><em class="ae">AE Setia</em><em class="kl">KILAT</em></span><p>Bay sensors and automatic overstay fees keep docks free; site security and repairs by AE Setia.</p></div>
+      <div class="rh"><span>Core Risks</span></div>
+      <div class="rgrid">
+        <div><i>⚡</i>Grid Capacity &amp; Delays</div>
+        <div><i>⟳</i>Technological Obsolescence</div>
+        <div><i>↕</i>Electricity Price Volatility</div>
+        <div><i>✓</i>Uptime &amp; Maintenance</div>
+        <div><i>⚠</i>Vandalism &amp; Parking Abuse</div>
+      </div>
     </div>
   </div>
 </section>
@@ -541,38 +547,11 @@ body:not(.locked) #gate{display:none}
   </div>
 </section>
 
-<!-- 07 OPERATOR -->
-<section id="s7">
-  <div class="bignum">07</div>
-  <div class="wrap op">
-    <div>
-      <div class="kicker reveal"><b>07</b> The Operator</div>
-      <h2 class="reveal">Operated by <em>AE Setia Sdn Bhd.</em></h2>
-      <p class="lead reveal">An integrated engineering company — electrical, mechanical, civil and fire protection — with <b>TNB as its main client</b>. AE Setia installs, operates and maintains every KilatX hub.</p>
-      <div class="facts reveal">
-        <div><b>TNB</b>Main client, active projects in 2026</div>
-        <div><b>CIDB G4</b>Civil, building, M&amp;E</div>
-        <div><b>ISO 9001:2015</b>Energy Commission · SPAN</div>
-        <div><b>11/33kV</b>Cabling, jointing, HDD, substations, smart meters</div>
-      </div>
-      <div class="roles3 reveal"><span><b>TNBX</b> network owner &amp; data</span><span class="ae"><b>AE Setia</b> operator &amp; field support</span><span><b>KilatX</b> platform · 6-person in-house IT team</span></div>
-    </div>
-    <div class="proj reveal">
-      <div class="lbl2">Recent TNB projects</div>
-      <div><b>PE Hill Park No 2, Rawang</b><span>Anti-climb, civil · Sep 2026</span></div>
-      <div><b>MSVT Kota Tinggi</b><span>Switchgear replacement, civil · Aug 2026</span></div>
-      <div><b>MSVT Melaka</b><span>KVT Onlok to Kg Baru, HDD · Aug 2026</span></div>
-      <div><b>C&amp;M J2 Johor Jaya</b><span>11kV routine works · Aug 2026</span></div>
-      <div><b>C&amp;M J2 Kota Tinggi</b><span>33kV routine works · Aug 2026</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 08 PROOF OF CONCEPT & SCOPE -->
+<!-- 07 PROOF OF CONCEPT & SCOPE -->
 <section id="s8">
-  <div class="bignum">08</div>
+  <div class="bignum">07</div>
   <div class="wrap">
-    <div class="kicker reveal"><b>08</b> Proof of Concept &amp; Scope</div>
+    <div class="kicker reveal"><b>07</b> Proof of Concept &amp; Scope</div>
     <h2 class="reveal">Start with a proof of concept. <em>One scope covers all.</em></h2>
     <div class="poc reveal">
       <div><em>Day 1</em><b>KilatX deployed</b><span>Set up in a TNBX environment, with admin roles</span></div>
@@ -600,11 +579,11 @@ body:not(.locked) #gate{display:none}
   </div>
 </section>
 
-<!-- 09 STRATEGIC VALUE -->
+<!-- 08 STRATEGIC VALUE -->
 <section id="s9" class="val">
-  <div class="bignum">09</div>
+  <div class="bignum">08</div>
   <div class="wrap">
-    <div class="kicker reveal"><b>09</b> Strategic Value for TNBX</div>
+    <div class="kicker reveal"><b>08</b> Strategic Value for TNBX</div>
     <h2 class="reveal">From charging infrastructure to a <em>data-driven EV network.</em></h2>
     <div class="grid g4 reveal" style="margin-top:24px">
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Visibility</h3><p>A unified view of every connected station — and TNBX owns the data.</p></div>
