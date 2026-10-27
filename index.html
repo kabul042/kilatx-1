@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>KILAT × TNBX — Executive Proposal</title>
+<link rel="icon" href="assets/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* KILAT teal CMYK 71/15/20/25 → #37A399 */
+  --navy:#0A2430; --ink:#06171f;
+  --teal:#37A399; --teal-l:#62cfc3; --gold:#D4A017; --gold-l:#f6d36b;
+  --light:#ffffff; --muted:#a3bcc2; --line:rgba(255,255,255,.10);
+  --card:rgba(255,255,255,.04); --red:#e5534b; --green:#3fb68b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{background:var(--ink);color:var(--light);font-family:Inter,system-ui,sans-serif;line-height:1.55;overflow-x:hidden;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;background-attachment:fixed}
+h1,h2,h3,h4{font-family:Sora,Inter,sans-serif;letter-spacing:-.02em}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.bar{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:14px;padding:14px 28px;background:linear-gradient(var(--ink),rgba(6,23,31,0))}
+.bar .logo{display:flex;align-items:center;gap:10px;font-family:Sora;font-weight:700;letter-spacing:.08em}
+.bar .logo img{width:34px;height:34px;border-radius:9px}
+.bar .tag{font-size:11px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase}
+.bar .sp{flex:1}
+.counter{font:600 12px Sora;color:var(--muted);letter-spacing:.1em}
+.btn{border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--light);border-radius:999px;padding:8px 16px;font:600 13px Inter;cursor:pointer;text-decoration:none;display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
+.btn.gold{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));z-index:60;width:0}
+.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:8px}
+.dots a{width:7px;height:7px;border-radius:9px;background:rgba(255,255,255,.25);transition:.3s}
+.dots a.on{height:24px;background:var(--gold)}
+
+section{min-height:100vh;padding:100px 7vw 64px;position:relative;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center}
+.wrap{max-width:1180px;margin:0 auto;width:100%}
+.kicker{display:flex;align-items:center;gap:12px;font:600 12px Inter;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.kicker b{font:800 13px Sora;letter-spacing:.1em}
+.bignum{position:absolute;right:6vw;top:76px;font:800 150px Sora;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.07);pointer-events:none}
+h2{font-size:clamp(30px,4.2vw,54px);line-height:1.06;font-weight:800;margin-bottom:16px}
+h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gold-l));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(15px,1.4vw,18px);color:var(--muted);max-width:760px}
+.lead b{color:#fff}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;backdrop-filter:blur(6px)}
+.card h3{font-size:18px;margin:10px 0 6px}
+.card p{color:var(--muted);font-size:14px}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(55,163,153,.18);border:1px solid rgba(98,207,195,.35);color:var(--teal-l)}
+.ico svg{width:22px;height:22px}
+.chip{display:inline-block;font:600 10.5px Inter;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid rgba(212,160,23,.55);color:var(--gold-l)}
+.chip.teal{border-color:rgba(98,207,195,.55);color:var(--teal-l)}
+.note{font-size:12px;color:var(--muted);opacity:.85;margin-top:14px}
+.punch{font:700 clamp(18px,2vw,24px) Sora;margin-top:26px}
+.punch span{color:var(--gold-l)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* 01 cover */
+#s1{overflow:hidden}
+#s1 .bg{position:absolute;inset:0 0 -22% 0;background:url(assets/tnb-street.jpg) center top/cover;opacity:.32;mask-image:linear-gradient(90deg,transparent 0,#000 55%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%)}
+.lockup{display:flex;align-items:center;gap:22px;margin-bottom:30px;flex-wrap:wrap}
+.lockup .k{display:flex;align-items:center;gap:12px;font:800 34px Sora;letter-spacing:.06em}
+.lockup .k small{display:block;font:600 10px Inter;letter-spacing:.35em;color:var(--teal-l)}
+.lockup .k img{width:58px;height:58px;border-radius:14px}
+.lockup .x{font:300 34px Sora;color:var(--gold)}
+.lockup .t{background:#fff;border-radius:14px;padding:6px 14px}
+.lockup .t img{height:48px}
+#s1 h1{font-size:clamp(38px,5.8vw,80px);line-height:1.02;font-weight:800;max-width:980px}
+#s1 h1 span{color:var(--gold)}
+.tagline{font:600 clamp(16px,1.8vw,22px) Sora;color:var(--teal-l);margin:22px 0 10px}
+.opby{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(6,23,31,.6);font-size:13px;color:var(--muted)}
+.opby b{color:#fff}
+
+/* 02 challenge */
+.chal{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.frag{position:relative;height:340px}
+.frag .n{position:absolute;padding:10px 14px;border-radius:12px;border:1px dashed rgba(255,255,255,.25);background:rgba(255,255,255,.04);font-size:13px;color:var(--muted);animation:float 6s ease-in-out infinite}
+.frag .n b{display:block;color:#fff;font:700 14px Sora}
+.frag .q{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:120px;height:120px;border-radius:50%;display:grid;place-items:center;text-align:center;border:2px dashed var(--gold);color:var(--gold-l);font:700 13px Sora}
+@keyframes float{50%{transform:translateY(-8px)}}
+.needs{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.needs span{border:1px solid rgba(98,207,195,.4);background:rgba(55,163,153,.12);border-radius:999px;padding:8px 14px;font-size:14px}
+
+/* 03 solution */
+.pipe{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin-top:34px}
+.node{border-radius:22px;padding:28px 20px;text-align:center;background:#123847;border:1px solid rgba(98,207,195,.3);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.node.mid{background:linear-gradient(160deg,#1a5a5c,#0f3442);border-color:var(--teal-l);box-shadow:0 0 0 1px var(--teal),0 0 60px rgba(55,163,153,.35)}
+.node.end{border-color:rgba(212,160,23,.55)}
+.node h3{font-size:22px;margin:12px 0 6px}
+.node p{font-size:13px;color:var(--muted)}
+.node .ico{margin:0 auto;width:54px;height:54px;border-radius:16px}
+.node.end .ico{background:rgba(212,160,23,.15);border-color:rgba(212,160,23,.5);color:var(--gold-l)}
+.arrow{width:64px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--teal-l));position:relative;overflow:hidden}
+.arrow:after{content:"";position:absolute;top:0;left:-30%;width:30%;height:100%;background:#fff;animation:flow 1.6s linear infinite}
+@keyframes flow{to{left:100%}}
+.rdi{text-align:center;margin-top:34px;font:700 clamp(20px,2.4vw,30px) Sora}
+.rdi i{color:var(--gold);font-style:normal;margin:0 10px}
+.subj{text-align:center;color:var(--muted);font-size:14px;margin-top:8px}
+
+/* 04 command centre */
+#s4{padding-top:80px;padding-bottom:10px}
+#s4 .punch{margin-top:14px}
+.checks{margin-top:14px!important}
+.cc{background:#0b2531;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.cc .top{display:flex;gap:10px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.25);font-size:12.5px;color:var(--muted)}
+.cc .top b{color:#fff;font:700 13px Sora}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-weight:600}
+.live:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.3}}
+.cc .body{display:grid;grid-template-columns:1.1fr 1fr;gap:12px;padding:12px}
+.panel{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:14px;padding:12px}
+.panel h4{font:600 11px Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
+.mapbox{position:relative;height:100%;min-height:240px;border-radius:10px;overflow:hidden;background:#0e3040}
+.mapbox svg{position:absolute;inset:0;width:100%;height:100%}
+.legend{position:absolute;left:10px;bottom:10px;display:flex;gap:10px;font-size:11px;color:var(--muted);background:rgba(6,23,31,.75);padding:6px 10px;border-radius:8px}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.kpis div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:10px}
+.kpis b{display:block;font:800 21px Sora}
+.kpis span{color:var(--muted);font-size:11px}
+.kpis small{color:var(--green);font-size:10.5px;font-weight:600}
+.right{display:flex;flex-direction:column;gap:12px}
+.chart{display:flex;align-items:flex-end;gap:4px;height:62px}
+.chart i{flex:1;background:linear-gradient(var(--teal-l),var(--teal));border-radius:4px 4px 0 0;transition:height .8s ease}
+.chart i.pk{background:linear-gradient(var(--gold-l),var(--gold))}
+.alerts{display:flex;flex-direction:column;gap:6px;font-size:12px}
+.alerts div{display:flex;gap:8px;align-items:center;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,.03)}
+.alerts .s{width:8px;height:8px;border-radius:50%;flex:none}
+.alerts .t{margin-left:auto;color:var(--muted);font-size:11px}
+.checks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 20px;margin-top:18px}
+.checks div{display:flex;gap:10px;align-items:center;font-size:15px}
+.checks div:before{content:"✓";width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--green);color:var(--green);font-size:12px;font-weight:700}
+
+/* 05 flows */
+.flows{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}
+.flow{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;display:grid;grid-template-columns:230px 1fr;gap:20px;align-items:center}
+.flow h3{font-size:20px;margin-bottom:4px}
+.flow .lbl{font:700 11px Inter;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.term{height:330px;border-radius:24px;background:#000;padding:9px;box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 0 2px #24414d}
+.tscr{position:relative;height:100%;border-radius:17px;background:linear-gradient(180deg,#0f3442,#0A2430);overflow:hidden}
+.ts{position:absolute;inset:0;padding:16px 14px;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateX(24px);transition:.45s}
+.ts.on{opacity:1;transform:none}
+.ts .hd{font:700 15px Sora}
+.ts .sub{font-size:11.5px;color:var(--muted)}
+.dk{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.dk span{border-radius:10px;padding:12px 0;text-align:center;font:700 13px Sora;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.dk .free{border-color:var(--green);background:rgba(63,182,139,.18)}
+.dk .busy{opacity:.4}
+.dk .sel{background:var(--teal);border-color:var(--teal-l);box-shadow:0 0 18px rgba(98,207,195,.5)}
+.amt{display:flex;flex-direction:column;gap:8px}
+.amt span{border:1px solid var(--line);border-radius:12px;padding:11px;text-align:center;font:700 17px Sora;background:rgba(255,255,255,.04)}
+.amt .sel{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.qrw{width:150px;height:150px;margin:6px auto 0;background:#fff;border-radius:14px;padding:10px;position:relative}
+.qrw .qg{display:grid;grid-template-columns:repeat(21,1fr);width:100%;height:100%}
+.qrw .qg i{background:#0a2430}
+.qrw .qg i.o{background:transparent}
+.qrw:after{content:"";position:absolute;left:6px;right:6px;height:2px;background:var(--red);top:8%;box-shadow:0 0 12px var(--red);animation:scan 1.6s ease-in-out infinite alternate}
+@keyframes scan{to{top:90%}}
+.nfcz{position:relative;width:150px;height:150px;margin:6px auto 0;display:grid;place-items:center}
+.nfcz .rp{position:absolute;inset:0;border-radius:50%;border:2px solid var(--teal-l);opacity:0;animation:ripple 2s ease-out infinite}
+.nfcz .rp:nth-child(2){animation-delay:.6s}.nfcz .rp:nth-child(3){animation-delay:1.2s}
+@keyframes ripple{from{transform:scale(.35);opacity:.9}to{transform:scale(1);opacity:0}}
+.nfcz .cardx{width:96px;height:62px;border-radius:10px;background:linear-gradient(135deg,var(--gold-l),var(--gold));color:var(--navy);font:800 12px Sora;padding:8px;position:relative;z-index:1;animation:tapc 2s ease-in-out infinite;box-shadow:0 10px 24px rgba(0,0,0,.4)}
+@keyframes tapc{0%,100%{transform:translateY(-14px) rotate(-8deg)}45%,60%{transform:translateY(4px) rotate(0)}}
+.ok{margin-top:auto;text-align:center;border-radius:12px;padding:10px;background:rgba(63,182,139,.18);border:1px solid var(--green);color:#bff0dc;font:600 12.5px Inter}
+.steps{list-style:none;display:flex;flex-direction:column;gap:8px;counter-reset:s}
+.steps li{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;border:1px solid transparent;color:var(--muted);transition:.3s;font-size:15px;cursor:pointer}
+.steps li:before{counter-increment:s;content:counter(s);width:28px;height:28px;flex:none;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font:700 13px Sora}
+.steps li.on{background:rgba(55,163,153,.18);border-color:rgba(98,207,195,.4);color:#fff}
+.steps li.on:before{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.steps li small{display:block;font-size:12px;color:var(--muted)}
+
+/* 06 operator */
+.op{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.tri{display:flex;flex-direction:column;gap:10px}
+.role{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.role b{font:800 18px Sora}
+.role span{font-size:14px;color:var(--muted)}
+.role.ae{border-color:rgba(212,160,23,.6);background:rgba(212,160,23,.08);box-shadow:0 0 40px rgba(212,160,23,.12)}
+.role.ae b{color:var(--gold-l)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.facts div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card);font-size:13.5px;color:var(--muted)}
+.facts div b{display:block;color:#fff;font:700 15px Sora;margin-bottom:2px}
+
+/* 07 value */
+.val .card{padding:26px}
+.val .card h3{font-size:22px}
+.next{margin-top:26px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:20px 24px;border-radius:18px;background:linear-gradient(90deg,rgba(212,160,23,.16),rgba(55,163,153,.12));border:1px solid rgba(212,160,23,.45)}
+.next>b{font:800 13px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.next p{font-size:17px;flex:1;min-width:260px}
+.quote{margin-top:22px;border-left:3px solid var(--teal);padding:4px 0 4px 18px;color:var(--muted);font-size:15px;font-style:italic;max-width:900px}
+footer{padding:26px 7vw;color:var(--muted);font-size:12px;border-top:1px solid var(--line);text-align:center}
+
+body.present section{height:100vh;overflow:hidden}
+
+@media (max-width:980px){
+  .g4,.g3{grid-template-columns:1fr 1fr}
+  .chal,.op,.flows,.cc .body{grid-template-columns:1fr}
+  .pipe{grid-template-columns:1fr;justify-items:center}.pipe .node{width:100%;max-width:420px}
+  .arrow{width:4px;height:40px;background:linear-gradient(var(--teal),var(--teal-l))}.arrow:after{width:100%;height:30%;left:0;top:-30%;animation:flowv 1.6s linear infinite}
+  .checks{grid-template-columns:1fr 1fr}
+  .bignum{font-size:84px}.dots{display:none}.bar .tag{display:none}
+}
+@keyframes flowv{to{top:100%}}
+@media (max-width:560px){
+  section{padding:88px 16px 52px}
+  .g2,.g3,.g4,.checks,.facts{grid-template-columns:1fr}
+  .bar{padding:12px 16px}.counter,.bar a.btn{display:none}
+  .flow{grid-template-columns:1fr}.term{max-width:250px;width:100%;margin:0 auto}
+  .kpis{grid-template-columns:1fr 1fr}
+  .role{grid-template-columns:1fr;gap:4px}
+  .frag{height:300px}.frag .n{font-size:12px;padding:8px 10px}
+}
+
+/* access gate */
+body.locked>*:not(#gate){display:none!important}
+body:not(.locked) #gate{display:none}
+#gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:radial-gradient(circle at 50% 30%,rgba(55,163,153,.25),transparent 60%),var(--ink)}
+#gate .box{width:100%;max-width:360px;text-align:center}
+#gate img{width:76px;height:76px;border-radius:18px;margin:0 auto 14px}
+#gate h1{font:800 26px Sora;letter-spacing:.08em}
+#gate p{color:var(--muted);font-size:14px;margin:6px 0 22px}
+#gate input{width:100%;font:700 30px Sora;letter-spacing:.6em;text-align:center;padding:14px 0 14px .6em;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;outline:none}
+#gate input:focus{border-color:var(--gold)}
+#gate .err{color:var(--red);font-size:13px;min-height:20px;margin-top:10px}
+#gate.shake .box{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+</style>
+</head>
+<body class="locked">
+<div id="gate"><div class="box">
+  <img src="assets/kilat-mark.png" alt="KILAT">
+  <h1>KILAT × TNBX</h1>
+  <p>Executive proposal · enter the access code</p>
+  <input id="code" type="password" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="••••" aria-label="Access code" autofocus>
+  <div class="err" id="err"></div>
+</div></div>
+<div class="progress" id="prog"></div>
+<header class="bar">
+  <div class="logo"><img src="assets/kilat-mark.png" alt="">KILAT</div>
+  <div class="tag">Executive Proposal · TNBX</div>
+  <div class="sp"></div>
+  <span class="counter" id="counter">01 / 07</span>
+  <a class="btn" href="https://kilat-fastcharging.vercel.app" target="_blank">Live system ↗</a>
+  <button class="btn gold" id="present">▶ Present</button>
+</header>
+<nav class="dots" id="dots"></nav>
+
+<!-- 01 THE OPPORTUNITY -->
+<section id="s1">
+  <div class="bg"></div>
+  <div class="wrap">
+    <div class="lockup reveal">
+      <div class="k"><img src="assets/kilat-mark.png" alt=""><div>KILAT<small>FAST CHARGING</small></div></div>
+      <div class="x">×</div>
+      <div class="t"><img src="assets/tnbx-logo.png" alt="TNBX"></div>
+    </div>
+    <div class="kicker reveal"><b>01</b> The Opportunity</div>
+    <h1 class="reveal">Connecting EV infrastructure to <span>real-time intelligence.</span></h1>
+    <p class="tagline reveal">One integrated platform. Complete operational visibility. Smarter decisions.</p>
+    <p class="lead reveal">KILAT proposes a unified EV charging ecosystem connecting <b>drivers</b>, <b>charging stations</b> and <b>TNBX</b> through a centralised IoT Analytics Command Centre.</p>
+    <div class="opby reveal">Operated by <b>AE Setia Sdn Bhd</b> · trusted TNB engineering partner</div>
+  </div>
+</section>
+
+<!-- 02 THE BUSINESS CHALLENGE -->
+<section id="s2">
+  <div class="bignum">02</div>
+  <div class="wrap chal">
+    <div>
+      <div class="kicker reveal"><b>02</b> The Business Challenge</div>
+      <h2 class="reveal">Infrastructure without visibility <em>limits value.</em></h2>
+      <p class="lead reveal">EV charging stations operated across different locations and partners can create <b>fragmented operational data</b>. TNBX needs one consolidated view of how its network performs:</p>
+      <div class="needs reveal">
+        <span>Station availability</span><span>Charging activity</span><span>Utilisation</span><span>Energy consumption</span><span>Revenue performance</span>
+      </div>
+    </div>
+    <div class="frag reveal">
+      <div class="n" style="left:2%;top:4%"><b>Own stations</b>Network A</div>
+      <div class="n" style="right:0;top:10%;animation-delay:1s"><b>Partner sites</b>Leased / third-party</div>
+      <div class="n" style="left:6%;bottom:8%;animation-delay:2s"><b>Mall &amp; office hubs</b>Separate systems</div>
+      <div class="n" style="right:4%;bottom:2%;animation-delay:3s"><b>Highway chargers</b>Different vendors</div>
+      <div class="q">One view<br>of the network?</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 THE KILAT SOLUTION -->
+<section id="s3">
+  <div class="bignum">03</div>
+  <div class="wrap">
+    <div class="kicker reveal"><b>03</b> The KILAT Solution</div>
+    <h2 class="reveal">One platform, from the charger <em>to the boardroom.</em></h2>
+    <p class="lead reveal">KILAT integrates charging-station connectivity, consumer applications and centralised operational analytics — bringing together data from every station that can be integrated, including third-party stations.</p>
+    <div class="pipe reveal">
+      <div class="node">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v17"/><path d="M2 22h14"/><path d="M15 9h2a2 2 0 0 1 2 2v4a2 2 0 0 0 4 0V9l-3-3"/><path d="m9 7-2 4h4l-2 4"/></svg></div>
+        <h3>EV Stations</h3><p>Chargers, docks &amp; bay sensors across the network</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="node mid">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>KILAT Platform</h3><p>Consumer app · Dock terminal · Payments · Operations</p>
+      </div>
+      <div class="arrow"></div>
+      <div class="node end">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m6 13 3-3 3 2 5-5"/></svg></div>
+        <h3>TNBX Command Centre</h3><p>Real-time view, analytics &amp; decisions</p>
+      </div>
+    </div>
+    <div class="rdi reveal">Real-Time Data<i>•</i>Analytics<i>•</i>Intelligence</div>
+    <p class="subj reveal">Subject to station connectivity, API access and data-sharing agreements.</p>
+  </div>
+</section>
+
+<!-- 04 IOT ANALYTICS & COMMAND CENTRE -->
+<section id="s4">
+  <div class="wrap">
+    <div class="kicker reveal"><b>04</b> IoT Analytics &amp; Integrated Command Centre</div>
+    <h2 class="reveal" style="font-size:clamp(28px,3.4vw,44px)">Every connected station, <em>on one screen.</em></h2>
+    <div class="cc reveal">
+      <div class="top"><b>KILAT Command Centre</b><span>· TNBX Network</span><span style="flex:1"></span><span class="live">LIVE</span><span id="clock">—</span></div>
+      <div class="body">
+        <div class="panel" style="display:flex;flex-direction:column">
+          <h4><span>Network map · Klang Valley</span><span id="online">38 / 40 online</span></h4>
+          <div class="mapbox">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" id="map">
+              <path d="M0 210 C90 180 140 230 210 190 S330 120 400 140" stroke="rgba(98,207,195,.22)" stroke-width="10" fill="none"/>
+              <path d="M60 0 C90 90 150 120 170 300" stroke="rgba(255,255,255,.08)" stroke-width="5" fill="none"/>
+              <path d="M260 0 C250 80 290 160 260 300" stroke="rgba(255,255,255,.08)" stroke-width="5" fill="none"/>
+              <path d="M0 80 C120 100 260 60 400 90" stroke="rgba(255,255,255,.06)" stroke-width="4" fill="none"/>
+            </svg>
+            <div class="legend"><span><i style="background:var(--green)"></i>Available</span><span><i style="background:var(--teal-l)"></i>Charging</span><span><i style="background:var(--red)"></i>Fault</span></div>
+          </div>
+        </div>
+        <div class="right">
+          <div class="kpis">
+            <div><span>Charger utilisation</span><b id="k-util">64%</b><small>▲ 6% vs last week</small></div>
+            <div><span>Energy today</span><b id="k-kwh">4,812</b><small>kWh delivered</small></div>
+            <div><span>Charging sessions</span><b id="k-ses">1,236</b><small>today</small></div>
+            <div><span>Active now</span><b id="k-act">57</b><small>charging</small></div>
+            <div><span>Uptime</span><b>99.2%</b><small>30-day</small></div>
+            <div><span>Revenue trend</span><b>▲ 12%</b><small>month on month</small></div>
+          </div>
+          <div class="panel">
+            <h4><span>Utilisation by hour</span><span>peak 6–9 pm</span></h4>
+            <div class="chart" id="chart"></div>
+          </div>
+          <div class="panel">
+            <h4><span>Fault &amp; downtime alerts</span><span id="acount">3 open</span></h4>
+            <div class="alerts" id="alerts"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="checks reveal">
+      <div>Live station status</div><div>Charger utilisation</div><div>Energy consumption (kWh)</div>
+      <div>Charging sessions</div><div>Revenue analytics</div><div>Fault &amp; downtime alerts</div>
+    </div>
+    <p class="punch reveal">From raw charging data to <span>actionable business intelligence.</span></p>
+    <p class="note">Illustrative data for demonstration.</p>
+  </div>
+</section>
+
+<!-- 05 CONSUMER EXPERIENCE -->
+<section id="s5">
+  <div class="bignum">05</div>
+  <div class="wrap">
+    <div class="kicker reveal"><b>05</b> KILAT Consumer Experience</div>
+    <h2 class="reveal">Charging in <em>three simple steps.</em></h2>
+    <p class="lead reveal">At every KILAT Dock, drivers choose how they pay — <b>scan with the KILAT app</b> or <b>tap a KILAT NFC card</b>. The charge stops automatically at the amount chosen.</p>
+    <div class="flows">
+      <div class="flow reveal" data-flow="qr">
+        <div class="term"><div class="tscr">
+          <div class="ts"><div class="hd">Select a dock</div><div class="sub">KILAT Hub · 4 docks</div>
+            <div class="dk"><span class="free">Dock 1</span><span class="busy">Dock 2</span><span class="sel">Dock 3</span><span class="free">Dock 4</span></div>
+            <div class="sub" style="margin-top:auto">● Available &nbsp; ○ In use</div></div>
+          <div class="ts"><div class="hd">Select amount</div><div class="sub">Dock 3 · charging stops at this amount</div>
+            <div class="amt"><span>RM 50</span><span class="sel">RM 100</span><span>RM 150</span></div></div>
+          <div class="ts"><div class="hd">Scan to pay</div><div class="sub">Dock 3 · RM 100 · KILAT app</div>
+            <div class="qrw"><div class="qg"></div></div>
+            <div class="ok">✓ Paid — charging started</div></div>
+        </div></div>
+        <div>
+          <div class="lbl">Flow 1</div><h3>Scan QR</h3>
+          <ol class="steps"><li><span>Select dock charger<small>See which docks are free</small></span></li><li><span>Select amount<small>RM 50 · RM 100 · RM 150</small></span></li><li><span>Scan QR<small>Pay in the KILAT app — charging starts</small></span></li></ol>
+        </div>
+      </div>
+      <div class="flow reveal" data-flow="nfc">
+        <div class="term"><div class="tscr">
+          <div class="ts"><div class="hd">Select a dock</div><div class="sub">KILAT Hub · 4 docks</div>
+            <div class="dk"><span class="sel">Dock 1</span><span class="busy">Dock 2</span><span class="busy">Dock 3</span><span class="free">Dock 4</span></div>
+            <div class="sub" style="margin-top:auto">● Available &nbsp; ○ In use</div></div>
+          <div class="ts"><div class="hd">Select amount</div><div class="sub">Dock 1 · charging stops at this amount</div>
+            <div class="amt"><span class="sel">RM 50</span><span>RM 100</span><span>RM 150</span></div></div>
+          <div class="ts"><div class="hd">Tap your card</div><div class="sub">Dock 1 · RM 50 · KILAT card</div>
+            <div class="nfcz"><span class="rp"></span><span class="rp"></span><span class="rp"></span><div class="cardx">⚡ KILAT</div></div>
+            <div class="ok">✓ Card accepted — charging started</div></div>
+        </div></div>
+        <div>
+          <div class="lbl">Flow 2</div><h3>Tap NFC</h3>
+          <ol class="steps"><li><span>Select dock charger<small>See which docks are free</small></span></li><li><span>Select amount<small>RM 50 · RM 100 · RM 150</small></span></li><li><span>Tap NFC card<small>No phone needed — charging starts</small></span></li></ol>
+        </div>
+      </div>
+    </div>
+    <p class="punch reveal">Every connected charging session contributes <span>valuable operational and behavioural insights.</span></p>
+  </div>
+</section>
+
+<!-- 06 OPERATOR -->
+<section id="s6">
+  <div class="bignum">06</div>
+  <div class="wrap op">
+    <div>
+      <div class="kicker reveal"><b>06</b> The Operator</div>
+      <h2 class="reveal">Operated by <em>AE Setia Sdn Bhd.</em></h2>
+      <p class="lead reveal">An integrated engineering company with <b>TNB as its main client</b>. AE Setia installs, operates and maintains KILAT on site — one accountable partner from the cable to the cloud.</p>
+      <div class="facts reveal">
+        <div><b>TNB partner</b>Active TNB projects in Rawang, Kota Tinggi, Melaka &amp; Johor Jaya</div>
+        <div><b>Certified</b>CIDB G4 · ISO 9001:2015 · Energy Commission registered</div>
+        <div><b>Power engineering</b>11/33kV cabling, HDD, substations, smart meters</div>
+        <div><b>Multi-discipline</b>Electrical, mechanical, civil &amp; fire protection</div>
+      </div>
+    </div>
+    <div class="tri reveal">
+      <div class="role"><b>TNBX</b><span>Network owner — strategy, sites and the data</span></div>
+      <div class="role ae"><b>AE Setia</b><span>Operator — installation, operations, maintenance and field support</span></div>
+      <div class="role"><b>KILAT</b><span>Platform — consumer app, dock terminal, payments and IoT analytics</span></div>
+      <p class="note">aesetia.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- 07 STRATEGIC VALUE -->
+<section id="s7" class="val">
+  <div class="bignum">07</div>
+  <div class="wrap">
+    <div class="kicker reveal"><b>07</b> Strategic Value for TNBX</div>
+    <h2 class="reveal">From charging infrastructure to a <em>data-driven EV network.</em></h2>
+    <div class="grid g4 reveal" style="margin-top:24px">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Visibility</h3><p>A unified view of every connected station.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3>Efficiency</h3><p>Identify under-utilised assets and act on them.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div><h3>Intelligence</h3><p>Make data-driven expansion decisions.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Scalability</h3><p>An architecture designed for network growth.</p></div>
+    </div>
+    <p class="quote reveal">“TNBX has the charging infrastructure. The strategic advantage comes from unified visibility of how that infrastructure performs — KILAT turns connected charging activity into actionable operational and commercial intelligence.”</p>
+    <div class="next reveal"><b>Proposed next step</b><p>A joint technical and commercial assessment, followed by a <b>pilot integration</b> with selected EV charging stations.</p><a class="btn gold" href="https://kilat-fastcharging.vercel.app" target="_blank">See KILAT live ↗</a></div>
+  </div>
+</section>
+
+<footer>KILAT × TNBX · Executive Proposal · Operated by AE Setia Sdn Bhd · Confidential</footer>
+
+<script>
+// access gate — SHA-256 of the code; keeps casual visitors out (not real encryption)
+const GATE='fe675fe7aaee830b6fed09b64e034f84dcbdaeb429d9cccd4ebb90e15af8dd71';
+const unlock=()=>{document.body.classList.remove('locked');try{sessionStorage.setItem('kx1-ok','1')}catch(e){}};
+try{if(sessionStorage.getItem('kx1-ok')==='1')unlock()}catch(e){}
+const codeEl=document.getElementById('code'),gate=document.getElementById('gate');
+codeEl.addEventListener('input',async()=>{
+  codeEl.value=codeEl.value.replace(/\D/g,'');
+  if(codeEl.value.length<4)return;
+  const h=[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(codeEl.value)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+  if(h===GATE)unlock();
+  else{document.getElementById('err').textContent='Wrong code. Please try again.';gate.classList.add('shake');setTimeout(()=>gate.classList.remove('shake'),400);codeEl.value=''}
+});
+
+// navigation
+const secs=[...document.querySelectorAll('section')];
+const dots=document.getElementById('dots'),counter=document.getElementById('counter');
+secs.forEach(s=>{const a=document.createElement('a');a.href='#'+s.id;dots.appendChild(a)});
+let cur=0;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  e.target.querySelectorAll('.reveal').forEach((r,i)=>setTimeout(()=>r.classList.add('in'),i*100));
+  cur=secs.indexOf(e.target);[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===cur));
+  counter.textContent=String(cur+1).padStart(2,'0')+' / '+String(secs.length).padStart(2,'0');
+}}),{threshold:.3});
+secs.forEach(s=>io.observe(s));
+addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-innerHeight)*100)+'%'});
+const go=i=>{cur=Math.max(0,Math.min(secs.length-1,i));secs[cur].scrollIntoView({behavior:'smooth'})};
+document.getElementById('present').onclick=()=>{document.body.classList.toggle('present');
+  if(document.body.classList.contains('present')){document.documentElement.requestFullscreen?.().catch(()=>{});go(0)}
+  else document.exitFullscreen?.().catch(()=>{})};
+addEventListener('keydown',e=>{
+  if(e.target===codeEl)return;
+  if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}
+});
+
+// 04 command centre (illustrative data)
+const fmt=n=>n.toLocaleString('en-MY');
+const map=document.getElementById('map'),NS='http://www.w3.org/2000/svg';
+const pts=[[40,60],[78,120],[110,70],[130,170],[150,110],[170,220],[190,60],[205,150],[220,250],[240,100],[255,190],[275,60],[290,140],[300,230],[320,90],[335,180],[350,40],[365,250],[95,230],[60,180],[180,280],[230,30],[310,270],[140,40],[380,130]];
+const dotsEl=pts.map(([x,y],i)=>{const g=document.createElementNS(NS,'g');
+  const r=document.createElementNS(NS,'circle');r.setAttribute('cx',x);r.setAttribute('cy',y);r.setAttribute('r',11);r.setAttribute('opacity',.18);
+  const c=document.createElementNS(NS,'circle');c.setAttribute('cx',x);c.setAttribute('cy',y);c.setAttribute('r',5);
+  g.append(r,c);map.appendChild(g);return [r,c]});
+const COL={a:'#3fb68b',c:'#62cfc3',f:'#e5534b'};
+const paint=()=>dotsEl.forEach(([r,c],i)=>{const k=(i===7||i===19)?'f':Math.random()<.55?'c':'a';r.setAttribute('fill',COL[k]);c.setAttribute('fill',COL[k])});
+paint();
+const chart=document.getElementById('chart');
+const base=[12,8,6,5,6,10,22,38,44,40,42,46,50,48,45,47,55,72,86,90,80,62,40,24];
+base.forEach((v,i)=>{const b=document.createElement('i');b.style.height=v+'%';if(i>=18&&i<=20)b.className='pk';chart.appendChild(b)});
+const AL=[['#e5534b','Dock 3 · Bangsar South — charger offline'],['#D4A017','Dock 2 · Shah Alam — overstay 18 min'],['#e5534b','Dock 1 · Cyberjaya — connector fault'],['#D4A017','Dock 4 · Mont Kiara — comms delay'],['#3fb68b','Dock 3 · Bangsar South — restored']];
+const alerts=document.getElementById('alerts');let ai=0;
+const drawAlerts=()=>{alerts.innerHTML=[0,1,2].map(j=>{const [c,t]=AL[(ai+j)%AL.length];return `<div><span class="s" style="background:${c}"></span>${t}<span class="t">${j*4+2} min</span></div>`}).join('');ai++};
+drawAlerts();
+let kwh=4812,ses=1236,act=57;
+setInterval(()=>{
+  kwh+=Math.floor(Math.random()*9)+2;ses+=Math.random()<.5?1:0;act=Math.max(48,Math.min(66,act+Math.round(Math.random()*4-2)));
+  document.getElementById('k-kwh').textContent=fmt(kwh);document.getElementById('k-ses').textContent=fmt(ses);document.getElementById('k-act').textContent=act;
+  document.getElementById('k-util').textContent=Math.round(act/0.9)+'%';
+  document.getElementById('clock').textContent=new Date().toLocaleTimeString('en-MY',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+},1000);
+setInterval(paint,3500);setInterval(drawAlerts,4000);
+setInterval(()=>[...chart.children].forEach((b,i)=>b.style.height=Math.max(4,Math.min(98,base[i]+Math.round(Math.random()*10-5)))+'%'),2500);
+
+// 05 flows — each terminal steps through dock → amount → pay
+document.querySelectorAll('.qg').forEach(q=>{
+  const N=21,fin=(r,c)=>{for(const [R,C] of [[0,0],[0,14],[14,0]]){if(r>=R&&r<R+7&&c>=C&&c<C+7){const y=r-R,x=c-C;return (y===0||y===6||x===0||x===6||(y>=2&&y<=4&&x>=2&&x<=4))?1:0}}return -1};
+  let h='';for(let r=0;r<N;r++)for(let c=0;c<N;c++){const f=fin(r,c);h+=`<i class="${(f===1||(f===-1&&Math.random()<.48))?'':'o'}"></i>`}
+  q.innerHTML=h});
+document.querySelectorAll('.flow').forEach((f,k)=>{
+  const sc=[...f.querySelectorAll('.ts')],li=[...f.querySelectorAll('.steps li')];let s=0,t;
+  const show=i=>{s=i;sc.forEach((x,j)=>x.classList.toggle('on',j===i));li.forEach((x,j)=>x.classList.toggle('on',j===i))};
+  const run=()=>{clearInterval(t);t=setInterval(()=>show((s+1)%sc.length),2600)};
+  li.forEach((x,i)=>x.onclick=()=>{show(i);run()});
+  show(0);setTimeout(run,k*1300);
+});
+</script>
+</body>
+</html>
