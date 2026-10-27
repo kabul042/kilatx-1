@@ -213,6 +213,58 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gol
 .facts div{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card);font-size:13.5px;color:var(--muted)}
 .facts div b{display:block;color:#fff;font:700 15px Sora;margin-bottom:2px}
 
+/* 06 turnover */
+#s6{padding-top:84px;padding-bottom:30px}
+.turn{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;margin-top:20px;align-items:start}
+.rh2{display:flex;justify-content:space-between;font:600 11px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding-bottom:10px;border-bottom:1px solid var(--line)}
+.rt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.rt b{font:600 18px Sora}.rt small{display:block;color:var(--muted);font-size:13px}
+.rt>span{font:700 22px Sora;white-space:nowrap}.rt>span.g{color:var(--gold-l)}
+.tsay{font-size:17px;margin-top:18px}.tsay b{color:var(--gold-l)}
+.sim{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+.lbl2{font:600 11px Inter;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-l);margin-bottom:10px}
+.row2{display:flex;justify-content:space-between;align-items:center;font-size:15px;color:var(--muted)}
+.row2 b{font:700 20px Sora;color:#fff}
+#slide{width:100%;margin:12px 0 8px;accent-color:var(--gold);height:6px;cursor:pointer}
+.tl{display:flex;height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
+.tl i{display:block;height:100%;transition:width .2s}
+#tl-g{background:var(--teal-l)}#tl-o{background:var(--gold)}
+.tl-k{display:flex;gap:14px;font-size:11px;color:var(--muted);margin:6px 0 8px}
+.tl-k i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+.br{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+.br b{color:#fff;font:700 15px Sora}
+.fee{font:800 clamp(48px,6vw,78px) Sora;color:var(--gold-l);line-height:1}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.presets button{border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;border-radius:99px;padding:6px 12px;font:600 12px Inter;cursor:pointer}
+.presets button:hover{border-color:var(--gold)}
+/* 07 operator extras */
+.roles3{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.roles3 span{border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:13px;color:var(--muted);background:var(--card)}
+.roles3 span b{color:#fff;margin-right:4px}
+.roles3 .ae{border-color:rgba(212,160,23,.6)}.roles3 .ae b{color:var(--gold-l)}
+.proj{display:flex;flex-direction:column}
+.proj>div{padding:14px 0;border-bottom:1px solid var(--line)}
+.proj b{display:block;font:600 18px Sora}.proj span{color:var(--muted);font-size:13.5px}
+/* 08 poc + scope */
+#s8{padding-top:84px;padding-bottom:24px}
+#s8 h2{font-size:clamp(28px,3.4vw,44px)}
+.poc{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(212,160,23,.5);margin-top:18px}
+.poc div{padding:14px 16px 4px 0;border-right:1px solid var(--line);margin-right:16px}
+.poc div:last-child{border:0;margin:0}
+.poc em{display:block;font:700 22px Sora;font-style:normal;color:var(--gold-l)}
+.poc b{display:block;font-size:15px;margin:2px 0}
+.poc span{font-size:13px;color:var(--muted)}
+.scope{display:grid;grid-template-columns:260px 1fr;gap:16px;margin-top:18px}
+.sc-main{border-radius:18px;padding:20px;background:linear-gradient(160deg,#1a5a5c,#0f3442);border:1px solid var(--teal-l)}
+.sc-main h3{font:800 40px Sora;letter-spacing:.02em}
+.sc-main p{color:#cfe7e4;font-size:14px}
+.sc-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;align-content:center}
+.sc-list li{padding:7px 0 7px 26px;position:relative;border-bottom:1px solid var(--line);font-size:14.5px}
+.sc-list li:before{content:"✓";position:absolute;left:0;top:7px;color:var(--gold);font-weight:700}
+.sc-list small{display:block;color:var(--muted);font-size:12.5px}
+.ctrl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.ctrl div{font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--card)}
+.ctrl b{display:block;color:#fff;font:700 14px Sora;margin-bottom:2px}
 /* 07 value */
 .val .card{padding:26px}
 .val .card h3{font-size:22px}
@@ -224,10 +276,22 @@ footer{padding:26px 7vw;color:var(--muted);font-size:12px;border-top:1px solid v
 
 body.present section{height:100vh;overflow:hidden}
 
+@media (min-width:981px) and (max-height:860px){
+  #s4 h2,#s5 h2{font-size:34px;margin-bottom:8px}
+  #s4{padding-top:66px;padding-bottom:0}#s4 .note{margin-top:2px}.mapbox{min-height:150px}.chart{height:44px}
+  .kpis b{font-size:17px}.kpis div{padding:7px 9px}.panel{padding:9px}
+  .alerts div{padding:4px 8px}.checks{margin-top:8px!important}.checks div{font-size:13px}
+  #s4 .punch{margin-top:8px;font-size:17px}
+  #s5{padding-top:70px}#s5 .lead{font-size:14px}#s5 .term{height:236px}#s5 .flows{margin-top:10px}
+  .flow{padding:14px}.steps li{padding:6px 10px;font-size:14px}
+  .appb{margin-top:10px}.appb div{padding:9px 12px}.appb span{font-size:12px;padding:4px 9px}
+  #s5 .punch{margin-top:10px;font-size:17px}
+}
 @media (max-width:980px){
   .g4,.g3{grid-template-columns:1fr 1fr}
   .rh,.rr{grid-template-columns:200px 150px 1fr}
   .appb{grid-template-columns:1fr}
+  .turn,.scope{grid-template-columns:1fr}.poc{grid-template-columns:1fr 1fr}.poc div{border:0;margin:0}.ctrl{grid-template-columns:1fr}
   .chal,.op,.flows,.cc .body{grid-template-columns:1fr}
   .pipe{grid-template-columns:1fr;justify-items:center}.pipe .node{width:100%;max-width:420px}
   .arrow{width:4px;height:40px;background:linear-gradient(var(--teal),var(--teal-l))}.arrow:after{width:100%;height:30%;left:0;top:-30%;animation:flowv 1.6s linear infinite}
@@ -239,6 +303,7 @@ body.present section{height:100vh;overflow:hidden}
   section{padding:88px 16px 52px}
   .g2,.g3,.g4,.checks,.facts{grid-template-columns:1fr}
   .rh{display:none}.rr{grid-template-columns:1fr;gap:6px}
+  .poc,.sc-list{grid-template-columns:1fr}
   .bar{padding:12px 16px}.counter,.bar a.btn{display:none}
   .flow{grid-template-columns:1fr}.term{max-width:250px;width:100%;margin:0 auto}
   .kpis{grid-template-columns:1fr 1fr}
@@ -274,7 +339,7 @@ body:not(.locked) #gate{display:none}
   <div class="logo"><img src="assets/kilat-mark.png" alt="">KILAT</div>
   <div class="tag">Executive Proposal · TNBX</div>
   <div class="sp"></div>
-  <span class="counter" id="counter">01 / 07</span>
+  <span class="counter" id="counter">01 / 09</span>
   <a class="btn" href="https://kilat-fastcharging.vercel.app" target="_blank">Live system ↗</a>
   <button class="btn gold" id="present">▶ Present</button>
 </header>
@@ -331,7 +396,7 @@ body:not(.locked) #gate{display:none}
       <div class="arrow"></div>
       <div class="node mid">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-        <h3>KILAT Platform</h3><p>Consumer app · Dock terminal · Payments · Operations</p>
+        <h3>KilatX Platform</h3><p>Consumer app · Dock terminal · Payments · Operations</p>
       </div>
       <div class="arrow"></div>
       <div class="node end">
@@ -443,44 +508,112 @@ body:not(.locked) #gate{display:none}
   </div>
 </section>
 
-<!-- 06 OPERATOR -->
+<!-- 06 DOCK TURNOVER (simulation) -->
 <section id="s6">
   <div class="bignum">06</div>
-  <div class="wrap op">
-    <div>
-      <div class="kicker reveal"><b>06</b> The Operator</div>
-      <h2 class="reveal">Operated by <em>AE Setia Sdn Bhd.</em></h2>
-      <p class="lead reveal">An integrated engineering company with <b>TNB as its main client</b>. AE Setia installs, operates and maintains KILAT on site — one accountable partner from the cable to the cloud.</p>
-      <div class="facts reveal">
-        <div><b>TNB partner</b>Active TNB projects in Rawang, Kota Tinggi, Melaka &amp; Johor Jaya</div>
-        <div><b>Certified</b>CIDB G4 · ISO 9001:2015 · Energy Commission registered</div>
-        <div><b>Power engineering</b>11/33kV cabling, HDD, substations, smart meters</div>
-        <div><b>Multi-discipline</b>Electrical, mechanical, civil &amp; fire protection</div>
+  <div class="wrap">
+    <div class="kicker reveal"><b>06</b> Dock Turnover</div>
+    <h2 class="reveal">The overstay fee <em>frees the dock.</em></h2>
+    <div class="turn">
+      <div class="reveal">
+        <div class="rates">
+          <div class="rh2"><span>After charging ends</span><span>Rate</span></div>
+          <div class="rt"><div><b>Grace window</b><small>per minute, first 10 minutes</small></div><span id="r-grace">RM 0.10</span></div>
+          <div class="rt"><div><b>Overstay · 2× base</b><small>per minute, until the bay is empty</small></div><span class="g" id="r-over">RM 0.20</span></div>
+          <div class="rt"><div><b>Meter stops</b><small>when the bay sensor reads empty — not at unplug</small></div><span>Sensor</span></div>
+        </div>
+        <p class="tsay">A driver who leaves on time pays <b>RM 1.00 at most</b>. A driver who stays pays double — and the next driver gets the dock sooner.</p>
+        <p class="note">Sample rates, subject to local authority approval · energy tariff set by TNBX.</p>
       </div>
-    </div>
-    <div class="tri reveal">
-      <div class="role"><b>TNBX</b><span>Network owner — strategy, sites and the data</span></div>
-      <div class="role ae"><b>AE Setia</b><span>Operator — installation, operations, maintenance and field support</span></div>
-      <div class="role"><b>KILAT</b><span>Platform — consumer app, dock terminal, payments and IoT analytics</span></div>
-      <p class="note">aesetia.com</p>
+      <div class="sim reveal">
+        <div class="lbl2">Try it · charging ends 14:00</div>
+        <div class="row2"><span>Car leaves the bay at</span><b id="leave">14:46</b></div>
+        <input type="range" id="slide" min="0" max="90" value="46" aria-label="Minutes after charging ends">
+        <div class="tl"><i id="tl-g"></i><i id="tl-o"></i></div>
+        <div class="tl-k"><span><i style="background:var(--teal-l)"></i>Grace</span><span><i style="background:var(--gold)"></i>Overstay</span></div>
+        <div class="br"><span id="b-g">10 min grace × RM 0.10</span><b id="b-gv">RM 1.00</b></div>
+        <div class="br"><span id="b-o">36 min overstay × RM 0.20</span><b id="b-ov">RM 7.20</b></div>
+        <div class="lbl2" style="margin-top:18px">Parking fee</div>
+        <div class="fee" id="fee">RM 8.20</div>
+        <div class="presets"><button data-m="5">Leaves in 5 min</button><button data-m="10">On time (10 min)</button><button data-m="30">30 min late</button><button data-m="90">1.5 hours</button></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 07 STRATEGIC VALUE -->
-<section id="s7" class="val">
+<!-- 07 OPERATOR -->
+<section id="s7">
   <div class="bignum">07</div>
+  <div class="wrap op">
+    <div>
+      <div class="kicker reveal"><b>07</b> The Operator</div>
+      <h2 class="reveal">Operated by <em>AE Setia Sdn Bhd.</em></h2>
+      <p class="lead reveal">An integrated engineering company — electrical, mechanical, civil and fire protection — with <b>TNB as its main client</b>. AE Setia installs, operates and maintains every KilatX hub.</p>
+      <div class="facts reveal">
+        <div><b>TNB</b>Main client, active projects in 2026</div>
+        <div><b>CIDB G4</b>Civil, building, M&amp;E</div>
+        <div><b>ISO 9001:2015</b>Energy Commission · SPAN</div>
+        <div><b>11/33kV</b>Cabling, jointing, HDD, substations, smart meters</div>
+      </div>
+      <div class="roles3 reveal"><span><b>TNBX</b> network owner &amp; data</span><span class="ae"><b>AE Setia</b> operator &amp; field support</span><span><b>KilatX</b> platform · 6-person in-house IT team</span></div>
+    </div>
+    <div class="proj reveal">
+      <div class="lbl2">Recent TNB projects</div>
+      <div><b>PE Hill Park No 2, Rawang</b><span>Anti-climb, civil · Sep 2026</span></div>
+      <div><b>MSVT Kota Tinggi</b><span>Switchgear replacement, civil · Aug 2026</span></div>
+      <div><b>MSVT Melaka</b><span>KVT Onlok to Kg Baru, HDD · Aug 2026</span></div>
+      <div><b>C&amp;M J2 Johor Jaya</b><span>11kV routine works · Aug 2026</span></div>
+      <div><b>C&amp;M J2 Kota Tinggi</b><span>33kV routine works · Aug 2026</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 PROOF OF CONCEPT & SCOPE -->
+<section id="s8">
+  <div class="bignum">08</div>
   <div class="wrap">
-    <div class="kicker reveal"><b>07</b> Strategic Value for TNBX</div>
+    <div class="kicker reveal"><b>08</b> Proof of Concept &amp; Scope</div>
+    <h2 class="reveal">Start with a proof of concept. <em>One scope covers all.</em></h2>
+    <div class="poc reveal">
+      <div><em>Day 1</em><b>KilatX deployed</b><span>Set up in a TNBX environment, with admin roles</span></div>
+      <div><em>Week 1</em><b>Training &amp; setup</b><span>Operator and finance training, pilot sites configured, tariffs approved</span></div>
+      <div><em>Weeks 2–4</em><b>Integration</b><span>TNBX chargers on OCPP, licensed payment provider, e-Invoice, dock booking live</span></div>
+      <div><em>Review</em><b>Proof of concept results</b><span>KPIs measured together — the basis for the next decision</span></div>
+    </div>
+    <div class="scope reveal">
+      <div class="sc-main"><div class="lbl2">One scope</div><h3>KilatX</h3><p>One platform for drivers, docks, operators and TNBX management.</p></div>
+      <ul class="sc-list">
+        <li><b>KilatX platform</b><small>Driver app with dock booking, dock terminal, Command Centre</small></li>
+        <li><b>Integration</b><small>OCPP, sensors, licensed PSP, TNBX systems, e-Invoice</small></li>
+        <li><b>Deployment</b><small>Proof of concept sites, then rollout</small></li>
+        <li><b>Testing &amp; QA</b><small>Including security testing</small></li>
+        <li><b>Training</b><small>Operators, site staff and finance</small></li>
+        <li><b>12 months maintenance &amp; support</b><small>By AE Setia and the KilatX team</small></li>
+      </ul>
+    </div>
+    <div class="ctrl reveal">
+      <div><b>Driver data protected</b>PDPA compliant · one-time-code login, no passwords to steal</div>
+      <div><b>Every ringgit tracked</b>Price locked per session · ledger can't be edited · tariff changes need two approvals</div>
+      <div><b>Grows with TNBX</b>Hubs and docks added from the dashboard · can move to a Malaysian data centre</div>
+    </div>
+    <p class="note">Excludes charger hardware, sensors and site civil works. Commercial terms are presented in negotiation.</p>
+  </div>
+</section>
+
+<!-- 09 STRATEGIC VALUE -->
+<section id="s9" class="val">
+  <div class="bignum">09</div>
+  <div class="wrap">
+    <div class="kicker reveal"><b>09</b> Strategic Value for TNBX</div>
     <h2 class="reveal">From charging infrastructure to a <em>data-driven EV network.</em></h2>
     <div class="grid g4 reveal" style="margin-top:24px">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Visibility</h3><p>A unified view of every connected station.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3>Efficiency</h3><p>Identify under-utilised assets and act on them.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Visibility</h3><p>A unified view of every connected station — and TNBX owns the data.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10M18 20V4M6 20v-4"/></svg></div><h3>Efficiency</h3><p>More sessions per dock: booking and overstay fees keep docks free.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div><h3>Intelligence</h3><p>Make data-driven expansion decisions.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Scalability</h3><p>An architecture designed for network growth.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Ready now</h3><p>Already built and working with TNBX chargers over OCPP — no hardware changes.</p></div>
     </div>
-    <p class="quote reveal">“TNBX has the charging infrastructure. The strategic advantage comes from unified visibility of how that infrastructure performs — KILAT turns connected charging activity into actionable operational and commercial intelligence.”</p>
-    <div class="next reveal"><b>Proposed next step</b><p>A joint technical and commercial assessment, followed by a <b>pilot integration</b> with selected EV charging stations.</p><a class="btn gold" href="https://kilat-fastcharging.vercel.app" target="_blank">See KILAT live ↗</a></div>
+    <p class="quote reveal">“TNBX has the charging infrastructure. The strategic advantage comes from unified visibility of how that infrastructure performs — KilatX turns connected charging activity into actionable operational and commercial intelligence.”</p>
+    <div class="next reveal"><b>Proposed next step</b><p>A joint technical and commercial assessment, followed by a <b>proof of concept</b> with selected EV charging stations.</p><a class="btn gold" href="https://kilat-fastcharging.vercel.app" target="_blank">See KILAT live ↗</a></div>
   </div>
 </section>
 
@@ -562,6 +695,18 @@ document.querySelectorAll('.flow').forEach((f,k)=>{
   li.forEach((x,i)=>x.onclick=()=>{show(i);run()});
   show(0);setTimeout(run,k*1300);
 });
+// 06 overstay simulation — sample rates
+const GR=10,RG=0.10,RO=0.20,sl=document.getElementById('slide');
+const rm=v=>'RM '+v.toFixed(2);
+const sim=()=>{const m=+sl.value,g=Math.min(m,GR),o=Math.max(0,m-GR);
+  const t=new Date(2026,0,1,14,m);document.getElementById('leave').textContent=t.toTimeString().slice(0,5);
+  document.getElementById('tl-g').style.width=(g/90*100)+'%';document.getElementById('tl-o').style.width=(o/90*100)+'%';
+  document.getElementById('b-g').textContent=g+' min grace × '+rm(RG);document.getElementById('b-gv').textContent=rm(g*RG);
+  document.getElementById('b-o').textContent=o+' min overstay × '+rm(RO);document.getElementById('b-ov').textContent=rm(o*RO);
+  document.getElementById('fee').textContent=rm(g*RG+o*RO)};
+sl.addEventListener('input',sim);
+document.querySelectorAll('.presets button').forEach(b=>b.onclick=()=>{sl.value=b.dataset.m;sim()});
+sim();
 </script>
 </body>
 </html>
