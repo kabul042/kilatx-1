@@ -6,6 +6,8 @@
 <meta name="robots" content="noindex, nofollow">
 <title>KILAT × TNBX — Executive Proposal</title>
 <link rel="icon" href="assets/icon.svg">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -140,7 +142,17 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gol
 .panel{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:14px;padding:12px}
 .panel h4{font:600 11px Inter;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between}
 .mapbox{position:relative;height:100%;min-height:240px;border-radius:10px;overflow:hidden;background:#0e3040}
-.mapbox svg{position:absolute;inset:0;width:100%;height:100%}
+.mapbox #map{position:absolute;inset:0;background:#0e3040}
+.legend{z-index:500}
+#map .osm-dark{filter:invert(1) hue-rotate(185deg) brightness(.82) contrast(.9) saturate(.6)}.legend .tip{color:var(--gold-l)}
+#map .leaflet-control-attribution{background:rgba(6,23,31,.7);color:#7f98a0;font-size:9px}#map .leaflet-control-attribution a{color:#9fb5bc}
+#map .leaflet-bar a{background:#0b2531;color:#fff;border-color:rgba(255,255,255,.12)}
+#map .leaflet-tooltip{background:#0b2531;color:#e8f1f2;border:1px solid rgba(98,207,195,.35);font:12px Inter;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+#map .leaflet-tooltip-top:before{border-top-color:#0b2531}
+#map .leaflet-popup-content-wrapper,#map .leaflet-popup-tip{background:#0b2531;color:#e8f1f2;border:1px solid rgba(98,207,195,.35)}
+#map .leaflet-popup-content{margin:12px 14px;font:12.5px/1.5 Inter;min-width:190px}#map .leaflet-popup-content b{font:700 14px Sora;color:#fff}
+#map .leaflet-popup-content a{color:var(--gold-l);font-weight:600}#map .leaflet-container a.leaflet-popup-close-button{color:#9fb5bc}
+#map .hp{display:grid;grid-template-columns:auto auto;gap:2px 12px;margin:8px 0}#map .hp span{color:#7f98a0}
 .legend{position:absolute;left:10px;bottom:10px;display:flex;gap:10px;font-size:11px;color:var(--muted);background:rgba(6,23,31,.75);padding:6px 10px;border-radius:8px}
 .legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -429,13 +441,8 @@ body:not(.locked) #gate{display:none}
         <div class="panel" style="display:flex;flex-direction:column">
           <h4><span>Network map · Malaysia</span><span id="online">— hubs online</span></h4>
           <div class="mapbox">
-            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet" id="map">
-              <path d="M0 210 C90 180 140 230 210 190 S330 120 400 140" stroke="rgba(98,207,195,.22)" stroke-width="10" fill="none"/>
-              <path d="M60 0 C90 90 150 120 170 300" stroke="rgba(255,255,255,.08)" stroke-width="5" fill="none"/>
-              <path d="M260 0 C250 80 290 160 260 300" stroke="rgba(255,255,255,.08)" stroke-width="5" fill="none"/>
-              <path d="M0 80 C120 100 260 60 400 90" stroke="rgba(255,255,255,.06)" stroke-width="4" fill="none"/>
-            </svg>
-            <div class="legend"><span><i style="background:var(--green)"></i>Available</span><span><i style="background:var(--teal-l)"></i>Charging</span><span><i style="background:var(--red)"></i>Fault / offline</span><span>bubble = hubs in area</span></div>
+            <div id="map" role="region" aria-label="Live map of all KILAT hubs"></div>
+            <div class="legend"><span><i style="background:var(--green)"></i>Available</span><span><i style="background:var(--teal-l)"></i>Charging</span><span><i style="background:var(--red)"></i>Fault</span><span><i style="background:#7d8f96"></i>Offline</span><span class="tip">tap a ring to zoom · tap a hub for details</span></div>
           </div>
         </div>
         <div class="right">
@@ -639,29 +646,53 @@ addEventListener('keydown',e=>{
 
 // 04 command centre — live from KILAT Control /control/iot (simulated telemetry); falls back to illustrative data offline
 const fmt=n=>n.toLocaleString('en-MY');
-const map=document.getElementById('map'),NS='http://www.w3.org/2000/svg',chart=document.getElementById('chart'),alerts=document.getElementById('alerts');
+const chart=document.getElementById('chart'),alerts=document.getElementById('alerts');
 const $=id=>document.getElementById(id);
 const IOT='https://kilat-fastcharging.vercel.app/api/iot/live';
 const HC=['#3fb68b','#62cfc3','#e5534b','#7d8f96'];
 const SC={critical:'#e5534b',major:'#D4A017',minor:'#62cfc3'};
 const ago=m=>m<60?m+' min':m<1440?Math.floor(m/60)+' h':Math.floor(m/1440)+' d';
-// Malaysia fits lng 99.6–119.4 × lat 0.8–7.4 → project into the 400×300 box (Peninsular left, Borneo right)
-const px=lng=>8+(lng-99.6)/(119.4-99.6)*384,py=lat=>272-(lat-0.8)/(7.4-0.8)*244;
-let hubDots=null,feed=null,ai=0,isLive=false;
+let feed=null,ai=0,isLive=false;
+// live Leaflet map — same behaviour as /control/iot: state rings → town rings → every hub; click a hub for its live numbers
+const HL=['Online · idle','Charging','Fault','Offline'];
+const ST={SGR:'Selangor',KUL:'Kuala Lumpur',JHR:'Johor',PNG:'Pulau Pinang',PRK:'Perak',SWK:'Sarawak',SBH:'Sabah',NSN:'Negeri Sembilan',PHG:'Pahang',KDH:'Kedah',MLK:'Melaka',TRG:'Terengganu',KTN:'Kelantan',PJY:'Putrajaya',PLS:'Perlis',LBN:'Labuan'};
+const SA={SGR:[3.3,101.35],NSN:[2.65,102.25],MLK:[2.15,102.35],JHR:[1.95,103.45],PHG:[3.85,102.85],TRG:[4.95,103.05],KTN:[5.45,102.05],PRK:[4.65,100.95],PNG:[5.2,100.15],KDH:[5.95,100.75],PLS:[6.6,100.15],SBH:[5.35,117.1],SWK:[2.45,112.9],LBN:[5.3,115.15]};
+const TOWNS_Z=7,DOTS_Z=9,CTRL='https://kilat-fastcharging.vercel.app/control/iot';
+let lm=null,lc=null,layers=null;
+const showLayer=()=>{const z=lm.getZoom(),on=z>=DOTS_Z?layers.dots:z>=TOWNS_Z?layers.towns:layers.states;Object.values(layers).forEach(l=>{if(l===on){if(!lm.hasLayer(l))l.addTo(lm)}else l.remove()})};
+function drawMap(points){
+  if(!window.L||points.length<4||typeof points[0][3]!=='string')return;
+  if(!lm){lm=L.map('map',{zoomControl:false,scrollWheelZoom:false,attributionControl:true});
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,className:'osm-dark',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'}).addTo(lm);
+    L.control.zoom({position:'bottomright'}).addTo(lm);lm.fitBounds([[0.9,99.6],[7.4,119.3]]);lm.on('zoomend',()=>layers&&showLayer());lc=L.canvas({padding:.3});
+    new ResizeObserver(()=>lm.invalidateSize()).observe(document.getElementById('map'))}
+  const open=lm.getContainer().querySelector('.leaflet-popup')?lm._popup:null,openCode=open&&open._code;
+  if(layers)Object.values(layers).forEach(l=>l.remove());
+  const dots=L.layerGroup(),rank=h=>h===2?3:h===3?2:h;
+  [...points].sort((a,b)=>rank(a[2])-rank(b[2])).forEach(([la,ln,h,code,name,n,city,kw,ch])=>{
+    const pop=L.popup({maxWidth:260})
+      .setContent(`<b>${name}</b><br><span style="color:#7f98a0">${code} · ${city}</span><div class="hp"><span>Status</span><span style="color:${HC[h]}">${HL[h]}</span><span>Docks</span><span>${ch} of ${n} charging</span><span>Live power</span><span>${fmt(kw)} kW</span></div><a href="${CTRL}?hub=${code}" target="_blank" rel="noopener">Open in KILAT Control ↗</a>`);
+    pop._code=code;
+    L.circleMarker([la,ln],{renderer:lc,radius:6,color:'#061820',weight:1.5,fillColor:HC[h],fillOpacity:.95}).bindTooltip(`<b>${name}</b><br>${code} · ${n} docks · ${HL[h]}`,{direction:'top',offset:[0,-4]}).bindPopup(pop).addTo(dots);
+    if(code===openCode)setTimeout(()=>pop.setLatLng([la,ln]).openOn(lm),0)});
+  const rings=(key,label,size,zoomTo,anchor)=>{const g=L.layerGroup(),by=new Map();
+    points.forEach(p=>{const k=key(p),t=by.get(k)||{la:0,ln:0,c:[0,0,0,0],n:0};t.la+=p[0];t.ln+=p[1];t.c[p[2]]++;t.n++;by.set(k,t)});
+    by.forEach((t,k)=>{const px=Math.round(size(t.n));let acc=0;
+      const stops=t.c.map((v,i)=>{const a=acc;acc+=v/t.n*360;return `${HC[i]} ${a}deg ${acc}deg`}).join(','),bad=t.c[2]+t.c[3];
+      const icon=L.divIcon({className:'',iconSize:[px,px],iconAnchor:[px/2,px/2],html:`<div style="position:relative;width:${px}px;height:${px}px;border-radius:50%;background:conic-gradient(${stops});padding:4px;box-shadow:0 2px 8px rgba(0,0,0,.45);cursor:pointer"><div style="width:100%;height:100%;border-radius:50%;background:#0a2430;display:grid;place-items:center;color:#fff;font:700 ${px>44?13:11}px/1 Inter,system-ui">${t.n}</div>${bad?`<span style="position:absolute;top:-4px;right:-6px;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:#e5534b;color:#fff;font:700 10px/16px Inter,system-ui;text-align:center;border:1.5px solid #061820">${bad}</span>`:''}</div>`});
+      const c=[t.la/t.n,t.ln/t.n];
+      L.marker((anchor&&anchor(k))||c,{icon,title:label(k),keyboard:true}).bindTooltip(`<b>${label(k)}</b> · ${t.n} hubs<br>${HL.map((l,i)=>l+' '+t.c[i]).join(' · ')}`,{direction:'top',offset:[0,-px/2]}).on('click',()=>lm.flyTo(c,zoomTo,{duration:.6})).addTo(g)});
+    return g};
+  const sk=p=>{const k=p[3].split('-')[1];return k==='KUL'||k==='PJY'?'SGR':k};
+  layers={states:rings(sk,k=>k==='SGR'?'Klang Valley · Selangor, KL, Putrajaya':ST[k]||k,n=>26+Math.sqrt(n)*.9,TOWNS_Z+1,k=>SA[k]),towns:rings(p=>p[6],k=>k,n=>22+Math.sqrt(n)*1.5,DOTS_Z+2),dots};
+  showLayer();
+}
 for(let i=0;i<24;i++){const b=document.createElement('i');b.style.height='4%';chart.appendChild(b)}
 const drawAlerts=()=>{if(!feed)return;const L=feed.alarms.latest;if(!L.length){alerts.innerHTML='<div>No open alarms</div>';return}
   alerts.innerHTML=[0,1,2].map(j=>{const a=L[(ai+j)%L.length];return `<div><span class="s" style="background:${SC[a.sev]||'#62cfc3'}"></span>${a.title} · ${a.hub}${a.dock?' dock '+a.dock:''}<span class="t">${ago(a.ageMin)}</span></div>`}).join('');ai++};
 const render=d=>{
   feed=d;
-  [...map.querySelectorAll('path')].forEach(p=>p.remove());
-  // group hubs into ~0.25° areas: bubble size = hubs there, red core = faulted/offline hubs (same idea as the rings on /control/iot)
-  const cells=new Map();d.points.forEach(([la,ln,h])=>{const k=Math.round(la*4)+'_'+Math.round(ln*4);const c=cells.get(k)||{la:0,ln:0,n:0,ch:0,bad:0};c.la+=la;c.ln+=ln;c.n++;if(h===1)c.ch++;if(h>=2)c.bad++;cells.set(k,c)});
-  if(hubDots)hubDots.remove();hubDots=document.createElementNS(NS,'g');map.appendChild(hubDots);
-  [...cells.values()].sort((x,y)=>y.n-x.n).forEach(c=>{const x=px(c.ln/c.n),y=py(c.la/c.n),r=2.2+Math.sqrt(c.n)*1.15;
-    const o=document.createElementNS(NS,'circle');o.setAttribute('cx',x.toFixed(1));o.setAttribute('cy',y.toFixed(1));o.setAttribute('r',r.toFixed(1));
-    o.setAttribute('fill',c.ch/c.n>.25?'#62cfc3':'#3fb68b');o.setAttribute('fill-opacity',.28);o.setAttribute('stroke',c.ch/c.n>.25?'#62cfc3':'#3fb68b');o.setAttribute('stroke-opacity',.75);o.setAttribute('stroke-width',.8);
-    const t=document.createElementNS(NS,'title');t.textContent=`${c.n} hubs · ${c.ch} charging · ${c.bad} fault/offline`;o.appendChild(t);hubDots.appendChild(o);
-    if(c.bad){const f=document.createElementNS(NS,'circle');f.setAttribute('cx',x.toFixed(1));f.setAttribute('cy',y.toFixed(1));f.setAttribute('r',(1.4+Math.sqrt(c.bad)*.9).toFixed(1));f.setAttribute('fill','#e5534b');hubDots.appendChild(f)}});
+  drawMap(d.points);
   const st=d.status,live=st.charging+st.preparing+st.finishing;
   $('online').textContent=`${fmt(d.online)} / ${fmt(d.hubs)} hubs online`;
   $('k-act').textContent=fmt(live);$('k-util').textContent=`utilisation ${(live/d.docks*100).toFixed(1)}% of ${fmt(d.docks)}`;
