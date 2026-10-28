@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>KILAT × TNBX — Executive Proposal</title>
+<title>TNBX × KILAT — Executive Proposal</title>
 <link rel="icon" href="assets/icon.svg">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -75,7 +75,10 @@ h2 em{font-style:normal;background:linear-gradient(90deg,var(--teal-l),var(--gol
 .lockup .t{background:#fff;border-radius:14px;padding:6px 14px}
 .lockup .t img{height:48px}
 #s1 h1{font-size:clamp(38px,5.8vw,80px);line-height:1.02;font-weight:800;max-width:980px}
-#s1 h1 span{color:var(--gold)}
+#s1 h1 span,#s10 h1 span{color:var(--gold)}
+#s10 .wrap{display:flex;flex-direction:column;align-items:center;text-align:center}
+#s10 .lockup{justify-content:center}
+#s10 h1{font-size:clamp(56px,9vw,128px);line-height:1;font-weight:800}
 .tagline{font:600 clamp(16px,1.8vw,22px) Sora;color:var(--teal-l);margin:22px 0 10px}
 .opby{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(6,23,31,.6);font-size:13px;color:var(--muted)}
 .opby b{color:#fff}
@@ -349,7 +352,7 @@ body:not(.locked) #gate{display:none}
 <body class="locked">
 <div id="gate"><div class="box">
   <img src="assets/kilat-mark.png" alt="KILAT">
-  <h1>KILAT × TNBX</h1>
+  <h1>TNBX × KILAT</h1>
   <p>Executive proposal · enter the access code</p>
   <input id="code" type="password" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="••••" aria-label="Access code" autofocus>
   <div class="err" id="err"></div>
@@ -359,7 +362,7 @@ body:not(.locked) #gate{display:none}
   <div class="logo"><img src="assets/kilat-mark.png" alt="">KILAT</div>
   <div class="tag">Executive Proposal · TNBX</div>
   <div class="sp"></div>
-  <span class="counter" id="counter">01 / 08</span>
+  <span class="counter" id="counter">01 / 09</span>
   <a class="btn" href="https://kilat-fastcharging.vercel.app" target="_blank">Live system ↗</a>
   <button class="btn gold" id="present">▶ Present</button>
 </header>
@@ -370,9 +373,9 @@ body:not(.locked) #gate{display:none}
   <div class="bg"></div>
   <div class="wrap">
     <div class="lockup reveal">
-      <div class="k"><img src="assets/kilat-mark.png" alt=""><div>KILAT<small>FAST CHARGING</small></div></div>
-      <div class="x">×</div>
       <div class="t"><img src="assets/tnbx-logo.png" alt="TNBX"></div>
+      <div class="x">×</div>
+      <div class="k"><img src="assets/kilat-mark.png" alt=""><div>KILAT<small>FAST CHARGING</small></div></div>
     </div>
     <div class="kicker reveal"><b>01</b> The Opportunity</div>
     <h1 class="reveal">Connecting EV infrastructure to <span>real-time intelligence.</span></h1>
@@ -480,7 +483,7 @@ body:not(.locked) #gate{display:none}
   <div class="wrap">
     <div class="kicker reveal"><b>05</b> KILAT Consumer Experience</div>
     <h2 class="reveal">Charging in <em>three simple steps.</em></h2>
-    <p class="lead reveal">No guessing at the charger: the KILAT app shows where to charge, what it costs and how the charge is going. At every KILAT Dock, drivers choose how they pay — <b>scan with the KILAT app</b> or <b>tap a KILAT NFC card</b>. The charge stops automatically at the amount chosen.</p>
+    <p class="lead reveal">The KILAT app shows where to charge, what it costs and how the charge is going. At every KILAT Dock, drivers choose how they pay — <b>scan with the KILAT app</b> or <b>tap a KILAT NFC card</b>. The charge stops automatically at the amount chosen.</p>
     <div class="flows">
       <div class="flow reveal" data-flow="qr">
         <div class="term"><div class="tscr">
@@ -517,7 +520,7 @@ body:not(.locked) #gate{display:none}
     </div>
     <div class="appb reveal">
       <div><h4>Before charging</h4><span>📍 Find nearby stations</span><span>🟢 Live dock availability</span><span>🏷️ See the price before starting</span><span>💳 Pay in the app</span></div>
-      <div><h4>While charging</h4><span>⚡ Charging speed (kW)</span><span>🔋 Battery %</span><span>⏱️ Time to full</span><span>📊 Energy delivered (kWh)</span><span>🔔 Alerts while you run errands</span></div>
+      <div><h4>While charging</h4><span>⚡ Charging speed (kW)</span><span>🔋 Battery %</span><span>🩺 Battery health</span><span>⏱️ Time to full</span><span>📊 Energy delivered (kWh)</span><span>🔔 Alerts while you run errands</span></div>
       <div><h4>Next</h4><span>🌙 Off-peak charging schedules <i class="chip">Roadmap</i></span></div>
     </div>
     <p class="punch reveal">Every connected charging session contributes <span>valuable operational and behavioural insights.</span></p>
@@ -529,14 +532,14 @@ body:not(.locked) #gate{display:none}
   <div class="bignum">06</div>
   <div class="wrap">
     <div class="kicker reveal"><b>06</b> Dock Turnover</div>
-    <h2 class="reveal">The overstay fee <em>frees the dock.</em></h2>
+    <h2 class="reveal">Idling fee <em>frees the dock.</em></h2>
     <div class="turn">
       <div class="reveal">
         <div class="rates">
           <div class="rh2"><span>After charging ends</span><span>Rate</span></div>
           <div class="rt"><div><b>Grace window</b><small>per minute, first 10 minutes</small></div><span id="r-grace">RM 0.10</span></div>
           <div class="rt"><div><b>Overstay · 2× base</b><small>per minute, until the bay is empty</small></div><span class="g" id="r-over">RM 0.20</span></div>
-          <div class="rt"><div><b>Meter stops</b><small>when the bay sensor reads empty — not at unplug</small></div><span>Sensor</span></div>
+          <div class="rt"><div><b>Meter stops</b><small>when the bay reads empty — not at unplug</small></div><span>Auto</span></div>
         </div>
         <p class="tsay">A driver who leaves on time pays <b>RM 1.00 at most</b>. A driver who stays pays double — and the next driver gets the dock sooner.</p>
         <p class="note">Sample rates, subject to local authority approval · energy tariff set by TNBX.</p>
@@ -567,7 +570,7 @@ body:not(.locked) #gate{display:none}
       <div><em>Day 1</em><b>KilatX deployed</b><span>Set up in a TNBX environment, with admin roles</span></div>
       <div><em>Week 1</em><b>Training &amp; setup</b><span>Operator and finance training, pilot sites configured, tariffs approved</span></div>
       <div><em>Weeks 2–4</em><b>Integration</b><span>TNBX chargers on OCPP, licensed payment provider, e-Invoice, dock booking live</span></div>
-      <div><em>Review</em><b>Proof of concept results</b><span>KPIs measured together — the basis for the next decision</span></div>
+      <div><em>Review</em><b>Proof of concept results</b><span>KPIs measured together — the basis for the next decision  estimated , we take approximately ± 90 days</span></div>
     </div>
     <div class="scope reveal">
       <div class="sc-main"><div class="lbl2">One scope</div><h3>KilatX</h3><p>One platform for drivers, docks, operators and TNBX management.</p></div>
@@ -577,7 +580,6 @@ body:not(.locked) #gate{display:none}
         <li><b>Deployment</b><small>Proof of concept sites, then rollout</small></li>
         <li><b>Testing &amp; QA</b><small>Including security testing</small></li>
         <li><b>Training</b><small>Operators, site staff and finance</small></li>
-        <li><b>12 months maintenance &amp; support</b><small>By AE Setia and the KilatX team</small></li>
       </ul>
     </div>
     <div class="ctrl reveal">
@@ -606,7 +608,20 @@ body:not(.locked) #gate{display:none}
   </div>
 </section>
 
-<footer>KILAT × TNBX · Executive Proposal · Operated by AE Setia Sdn Bhd · Confidential</footer>
+<!-- 09 THANK YOU -->
+<section id="s10">
+  <div class="wrap">
+    <div class="lockup reveal">
+      <div class="t"><img src="assets/tnbx-logo.png" alt="TNBX"></div>
+      <div class="x">×</div>
+      <div class="k"><img src="assets/kilat-mark.png" alt=""><div>KILAT<small>FAST CHARGING</small></div></div>
+    </div>
+    <h1 class="reveal">Thank <span>you.</span></h1>
+    <div class="opby reveal"><b>Kuala Lumpur | 28 October 2026</b></div>
+  </div>
+</section>
+
+<footer>TNBX × KILAT · Executive Proposal · Operated by AE Setia Sdn Bhd · Confidential</footer>
 
 <script>
 // access gate — SHA-256 of the code; keeps casual visitors out (not real encryption)
